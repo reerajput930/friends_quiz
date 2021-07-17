@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Fun Game</title>
+</head>
+
+<body>
+    <div class="majorblock">
+        <div class="quiz_block">
+            <div class="quiz_head">
+                <h2 class="question">Hello <span class="user_name"></span></h2>
+
+
+                <div class="timer">00:00:00</div>
+
+            </div>
+            <div class="quiz_body">
+                <div class="block_option" id="next_ques">
+                    <!--  <h1>What is your name?</h1> -->
+                  
+                 <!-- <ul >
+                    <li> <a class="option">option one</a></li>
+                    <li> <a class="option">option one</a></li>
+                    <li> <a class="option">option one</a></li>
+                    <li> <a class="option">option one</a></li>
+                    
+                    
+                </ul>  -->
+                </div>
+                <button class="btn-next" onclick="next()">Next</button>
+
+            </div>
+        </div>
+
+    </div>
+    <script src="java.js"></script>
+    
+    <script>
+        let seconds =0;
+        let minutes =0;
+        let hours =0;
+        setInterval(() => { 
+            if(seconds<59){
+                seconds++;
+            }
+            else{
+              seconds=0;
+              if(minutes<59){
+                  minutes++;
+
+              }
+              else{
+                  minutes=0;
+                  hours++;
+              }
+            }
+                     
+            let formate_seconds = seconds < 10 ? `0${seconds}`:`${seconds}`;
+            let formate_minutes = minutes < 10 ? `0${minutes}`:`${minutes}`;
+            let formate_hours = hours < 10 ? `0${hours}`:`${hours}`;
+            document.querySelector(".timer").innerHTML =`${formate_hours}:${formate_minutes}:${formate_seconds}`
+            sessionStorage.setItem("seconds",seconds);
+            sessionStorage.setItem("minutes",minutes);
+            sessionStorage.setItem("hours",hours);
+        }, 1000);
+    </script>
+</body>
+
+</html>
